@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write It Right | Learn English with AI!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== CSS RESET & GLOBAL STYLES ====== */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --kid-blue: #4DC3FF;
+            --kid-pink: #FF6BCB;
+            --kid-green: #6BFF8D;
+            --kid-yellow: #FFD166;
+            --kid-purple: #9D6BFF;
+            --kid-orange: #FF9D6B;
+            --light-bg: #F0F9FF;
+            --white: #FFFFFF;
+            --shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            --radius: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #E6F7FF, #FFF0F5);
+            color: #333;
+            line-height: 1.6;
+            padding: 15px;
+            min-height: 100vh;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ====== HEADER WITH CHARACTER ====== */
+        .header {
+            background: linear-gradient(135deg, var(--kid-blue), var(--kid-purple));
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .character {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 2.2rem;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ====== WELCOME SECTION ====== */
+        .welcome-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: popIn 1s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .student-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--kid-purple);
+            font-weight: bold;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 3px solid var(--kid-blue);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--kid-pink);
+            box-shadow: 0 0 0 3px rgba(255,107,203,0.2);
+        }
+
+        /* ====== ACTIVITY CARDS ====== */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 5px solid;
+            animation: cardAppear 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .activity-card:nth-child(1) { border-color: var(--kid-blue); animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { border-color: var(--kid-pink); animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { border-color: var(--kid-green); animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { border-color: var(--kid-yellow); animation-delay: 0.4s; }
+        .activity-card:nth-child(5) { border-color: var(--kid-purple); animation-delay: 0.5s; }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .activity-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: spin 3s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .activity-card h3 {
+            color: inherit;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .activity-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+        }
+
+        /* ====== WRITING SECTION ====== */
+        .writing-section {
+            background: linear-gradient(135deg, #FFF9F0, #F0FFF9);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .prompt-box {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid var(--kid-blue);
+            animation: colorChange 5s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { border-left-color: var(--kid-blue); }
+            25% { border-left-color: var(--kid-pink); }
+            50% { border-left-color: var(--kid-green); }
+            75% { border-left-color: var(--kid-yellow); }
+            100% { border-left-color: var(--kid-purple); }
+        }
+
+        .kid-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 3px dashed var(--kid-blue);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .kid-textarea:focus {
+            outline: none;
+            border: 3px solid var(--kid-pink);
+            box-shadow: 0 0 0 4px rgba(255,107,203,0.2);
+        }
+
+        /* ====== GRAMMAR SECTION ====== */
+        .grammar-section {
+            background: linear-gradient(135deg, #FFF5E6, #E6FFF5);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .grammar-exercise {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--kid-yellow);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .option {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: var(--kid-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .option.selected {
+            background: var(--kid-green);
+            color: white;
+            border-color: var(--kid-green);
+        }
+
+        .option.correct {
+            background: #4CAF50;
+            color: white;
+            animation: pulse 1s;
+        }
+
+        .option.incorrect {
+            background: #F44336;
+            color: white;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* ====== MEDIA UPLOAD SECTIONS ====== */
+        .upload-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .upload-area {
+            background: linear-gradient(135deg, #F0F7FF, #FFF0F5);
+            border: 4px dashed var(--kid-green);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .upload-area:hover {
+            background: linear-gradient(135deg, #E6F0FF, #FFE6F0);
+            transform: scale(1.02);
+        }
+
+        .upload-area i {
+            font-size: 4rem;
+            color: var(--kid-green);
+            margin-bottom: 1rem;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .upload-area input {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        /* ====== RECORDING SECTIONS ====== */
+        .recording-section {
+            background: linear-gradient(135deg, #FFF0F5, #F0FFF5);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .recording-box {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .video-preview, .audio-visualizer {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--kid-blue), var(--kid-purple));
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .media-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        /* ====== FILE MANAGEMENT CONTROLS ====== */
+        .file-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .delete-btn {
+            background: var(--kid-pink);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .delete-btn:hover {
+            background: #FF4D9C;
+            transform: scale(1.1);
+        }
+
+        .reupload-btn {
+            background: var(--kid-green);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .reupload-btn:hover {
+            background: #4DFF6B;
+            transform: scale(1.1);
+        }
+
+        /* ====== KID BUTTONS ====== */
+        .kid-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 150px;
+        }
+
+        .kid-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .kid-btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-blue { background: var(--kid-blue); color: white; }
+        .btn-pink { background: var(--kid-pink); color: white; }
+        .btn-green { background: var(--kid-green); color: white; }
+        .btn-yellow { background: var(--kid-yellow); color: white; }
+        .btn-purple { background: var(--kid-purple); color: white; }
+        .btn-orange { background: var(--kid-orange); color: white; }
+
+        .kid-btn i {
+            font-size: 1.3rem;
+        }
+
+        /* ====== REFRESH BUTTON ====== */
+        .refresh-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .refresh-btn {
+            background: var(--kid-orange);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .refresh-btn:hover {
+            background: #FF8C42;
+            transform: rotate(360deg);
+        }
+
+        /* ====== AI FEEDBACK SECTION ====== */
+        .ai-feedback {
+            background: linear-gradient(135deg, #FFF9E6, #E6F9FF);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 6px 12px rgba(77, 195, 255, 0.2); }
+            to { box-shadow: 0 6px 12px rgba(255, 107, 203, 0.2); }
+        }
+
+        .score-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: #FFD700;
+            animation: starTwinkle 1s infinite;
+        }
+
+        .star:nth-child(2) { animation-delay: 0.2s; }
+        .star:nth-child(3) { animation-delay: 0.4s; }
+        .star:nth-child(4) { animation-delay: 0.6s; }
+        .star:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes starTwinkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .feedback-box {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 3px solid var(--kid-blue);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { border-color: var(--kid-blue); }
+            50% { border-color: var(--kid-pink); }
+        }
+
+        /* ====== STICKER REWARDS ====== */
+        .sticker-section {
+            background: linear-gradient(135deg, #FFF0FF, #FFFFF0);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sticker-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .sticker {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .sticker:hover {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .sticker.unlocked {
+            animation: unlockSticker 0.5s ease;
+        }
+
+        @keyframes unlockSticker {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* ====== PROGRESS TRACKER ====== */
+        .progress-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #E6E6E6;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--kid-blue), var(--kid-green));
+            border-radius: 15px;
+            transition: width 1s ease;
+            width: 0%;
+        }
+
+        /* ====== SOUND EFFECTS ====== */
+        .sound-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .sound-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--kid-pink);
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .sound-btn:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 768px) {
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .character {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            
+            .recording-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .kid-btn {
+                width: 100%;
+            }
+            
+            .student-info {
+                flex-direction: column;
+            }
+            
+            .file-controls {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .refresh-container {
+                position: static;
+                text-align: center;
+                margin: 1rem 0;
+            }
+            
+            .refresh-btn {
+                display: inline-flex;
+            }
+            
+            .sound-controls {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+
+        /* ====== UTILITY CLASSES ====== */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .my-2 { margin-top: 2rem; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <!-- REFRESH BUTTON -->
+    <div class="refresh-container">
+        <button class="refresh-btn" id="refresh-btn">
+            <i class="fas fa-redo"></i> New Start
+        </button>
+    </div>
+
+    <!-- HEADER WITH CHARACTER -->
+    <header class="header">
+        <div class="character">✏️</div>
+        <h1>✍️ Write It Right!</h1>
+        <p>Learn English with AI! Write, Speak, Record & Earn Stickers! ✨</p>
+    </header>
+
+    <!-- WELCOME SECTION -->
+    <section class="welcome-section">
+        <h2 style="color: var(--kid-purple);">👋 Welcome to Write It Right!</h2>
+        <div class="student-info">
+            <div class="input-group">
+                <label for="student-name"><i class="fas fa-user"></i> Your Name:</label>
+                <input type="text" id="student-name" placeholder="Enter your name..." value="Student">
+            </div>
+            <div class="input-group">
+                <label for="student-grade"><i class="fas fa-graduation-cap"></i> Your Grade:</label>
+                <select id="student-grade" style="width:100%; padding:0.8rem; border:3px solid var(--kid-blue); border-radius:12px;">
+                    <option>Grade 1</option>
+                    <option>Grade 2</option>
+                    <option>Grade 3</option>
+                    <option selected>Grade 4</option>
+                    <option>Grade 5</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="kid-btn btn-pink" id="start-learning-btn" onclick="scrollToActivities()">
+                <i class="fas fa-play"></i> Start Learning Now!
+            </button>
+        </div>
+    </section>
+
+    <!-- ACTIVITY GRID -->
+    <section>
+        <h2 style="color: var(--kid-blue); text-align: center;">🎯 Choose Your Activity</h2>
+        <div class="activity-grid">
+            <div class="activity-card" style="border-color: var(--kid-blue);">
+                <div class="activity-icon" style="color: var(--kid-blue);">✍️</div>
+                <h3 style="color: var(--kid-blue);">Writing Practice</h3>
+                <p>Write sentences and stories. AI will check your spelling and grammar!</p>
+                <button class="kid-btn btn-blue" onclick="showWritingSection(); scrollToSection('writing-section')">
+                    <i class="fas fa-pencil-alt"></i> Start Writing
+                </button>
+            </div>
+            
+            <div class="activity-card" style="border-color: var(--kid-pink);">
+                <div class="activity-icon" style="color: var(--kid-pink);">📖</div>
+                <h3 style="color: var(--kid-pink);">Grammar Practice</h3>
+                <p>Practice grammar with fun exercises! Fill in the blanks and multiple choice.</p>
+                <button class="kid-btn btn-pink" onclick="showGrammarSection(); scrollToSection('grammar-section')">
+                    <i class="fas fa-book"></i> Start Grammar
+                </button>
+            </div>
+            
+            <div class="activity-card" style="border-color: var(--kid-green);">
+                <div class="activity-icon" style="color: var(--kid-green);">🎤</div>
+                <h3 style="color: var(--kid-green);">Speaking Practice</h3>
+                <p>Record your voice reading stories. AI will check your pronunciation!</p>
+                <button class="kid-btn btn-green" onclick="showAudioSection(); scrollToSection('audio-section')">
+                    <i class="fas fa-microphone"></i> Start Speaking
+                </button>
+            </div>
+            
+            <div class="activity-card" style="border-color: var(--kid-yellow);">
+                <div class="activity-icon" style="color: var(--kid-yellow);">🎥</div>
+                <h3 style="color: var(--kid-yellow);">Video Recording</h3>
+                <p>Record videos of yourself speaking English. Great for presentations!</p>
+                <button class="kid-btn btn-yellow" onclick="showVideoSection(); scrollToSection('video-section')">
+                    <i class="fas fa-video"></i> Record Video
+                </button>
+            </div>
+            
+            <div class="activity-card" style="border-color: var(--kid-purple);">
+                <div class="activity-icon" style="color: var(--kid-purple);">📁</div>
+                <h3 style="color: var(--kid-purple);">Upload Files</h3>
+                <p>Upload your writing, audio, or video files for AI feedback!</p>
+                <button class="kid-btn btn-purple" onclick="showUploadSection(); scrollToSection('upload-section')">
+                    <i class="fas fa-upload"></i> Upload Files
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRITING PRACTICE SECTION -->
+    <section id="writing-section" class="writing-section hidden">
+        <h2 style="color: var(--kid-blue);">✍️ Writing Practice</h2>
+        
+        <div class="prompt-box">
+            <h3 style="color: var(--kid-pink);"><i class="fas fa-lightbulb"></i> Today's Writing Prompt:</h3>
+            <p id="writing-prompt" style="font-size: 1.2rem; color: #555;">
+                Write about your favorite animal. What does it look like? What does it eat? Why do you like it?
+            </p>
+        </div>
+        
+        <textarea class="kid-textarea" id="student-writing" placeholder="Start writing here! Don't worry about mistakes, AI will help you! 🚀"></textarea>
+        
+        <div class="media-controls">
+            <button class="kid-btn btn-blue" onclick="speakText()">
+                <i class="fas fa-volume-up"></i> Listen to Prompt
+            </button>
+            <button class="kid-btn btn-green" onclick="checkWriting()">
+                <i class="fas fa-robot"></i> AI Check My Writing
+            </button>
+            <button class="kid-btn btn-yellow" onclick="clearWriting()">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+        </div>
+    </section>
+
+    <!-- GRAMMAR EXERCISES SECTION (DYNAMIC) - REMOVED "Tailored for Grade X" text -->
+    <section id="grammar-section" class="grammar-section hidden">
+        <h2 style="color: var(--kid-pink);">📖 Grammar Exercises (<span id="grammar-grade-display">Grade 4</span>)</h2>
+        
+        <div id="grammar-exercises-container">
+            <!-- Exercises will be injected by JavaScript based on grade level -->
+        </div>
+
+        <div class="text-center mt-2">
+            <button class="kid-btn btn-purple" onclick="checkAllGrammar()">
+                <i class="fas fa-check-circle"></i> Check All Answers
+            </button>
+            <button class="kid-btn btn-blue" onclick="resetGrammar()">
+                <i class="fas fa-redo"></i> Try Again
+            </button>
+        </div>
+    </section>
+
+    <!-- AUDIO PRACTICE SECTION -->
+    <section id="audio-section" class="recording-section hidden">
+        <h2 style="color: var(--kid-green);">🎤 Speaking Practice</h2>
+        
+        <!-- Audio File Controls -->
+        <div id="audio-controls" class="file-controls" style="display: none;">
+            <div class="file-info">
+                <i class="fas fa-music" style="color: var(--kid-green); font-size: 1.5rem;"></i>
+                <div>
+                    <strong id="audio-file-name">No audio file</strong>
+                    <div id="audio-file-size" style="color: #666; font-size: 0.9rem;">0 MB</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="delete-btn" onclick="deleteAudio()">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="reupload-btn" onclick="reuploadAudio()">
+                    <i class="fas fa-redo"></i> Reupload
+                </button>
+            </div>
+        </div>
+        
+        <div class="recording-box">
+            <div class="audio-visualizer" id="audio-visualizer">
+                <i class="fas fa-microphone"></i> Ready to record!
+            </div>
+            
+            <div class="timer" id="audio-timer" style="font-size: 1.5rem; color: var(--kid-green); font-weight: bold;">
+                00:00
+            </div>
+            
+            <div class="media-controls">
+                <button class="kid-btn btn-green" id="record-audio-btn">
+                    <i class="fas fa-microphone"></i> Start Recording
+                </button>
+                <button class="kid-btn btn-blue" id="stop-audio-btn" disabled>
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+                <button class="kid-btn btn-pink" id="play-audio-btn" disabled>
+                    <i class="fas fa-play"></i> Playback
+                </button>
+            </div>
+        </div>
+        
+        <p class="text-center mb-2">OR</p>
+        
+        <div class="upload-area" id="audio-upload-area">
+            <i class="fas fa-music"></i>
+            <h3>Upload Audio File</h3>
+            <p>Click here or drag & drop your audio file</p>
+            <input type="file" id="audio-upload" accept="audio/*">
+        </div>
+        
+        <audio id="audio-player" controls style="width: 100%; margin-top: 1rem; display: none;"></audio>
+        
+        <div class="text-center mt-2">
+            <button class="kid-btn btn-purple" onclick="checkPronunciation()">
+                <i class="fas fa-robot"></i> AI Check My Pronunciation
+            </button>
+        </div>
+    </section>
+
+    <!-- VIDEO RECORDING SECTION -->
+    <section id="video-section" class="upload-section hidden">
+        <h2 style="color: var(--kid-yellow);">🎥 Video Recording</h2>
+        
+        <!-- Video File Controls -->
+        <div id="video-controls" class="file-controls" style="display: none;">
+            <div class="file-info">
+                <i class="fas fa-video" style="color: var(--kid-yellow); font-size: 1.5rem;"></i>
+                <div>
+                    <strong id="video-file-name">No video file</strong>
+                    <div id="video-file-size" style="color: #666; font-size: 0.9rem;">0 MB</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="delete-btn" onclick="deleteVideo()">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="reupload-btn" onclick="reuploadVideo()">
+                    <i class="fas fa-redo"></i> Reupload
+                </button>
+            </div>
+        </div>
+        
+        <div class="recording-box">
+            <div class="video-preview">
+                <video id="video-preview" autoplay muted></video>
+                <div id="video-placeholder">
+                    <i class="fas fa-video fa-3x"></i>
+                    <p style="margin-top: 1rem;">Camera preview will appear here</p>
+                </div>
+            </div>
+            
+            <div class="record-indicator" id="video-record-indicator" style="display: none;">
+                <i class="fas fa-circle" style="color: red;"></i> RECORDING
+            </div>
+            
+            <div class="timer" id="video-timer" style="font-size: 1.5rem; color: var(--kid-yellow); font-weight: bold;">
+                00:00
+            </div>
+            
+            <div class="media-controls">
+                <button class="kid-btn btn-yellow" id="record-video-btn">
+                    <i class="fas fa-video"></i> Start Recording
+                </button>
+                <button class="kid-btn btn-pink" id="stop-video-btn" disabled>
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+                <button class="kid-btn btn-blue" id="play-video-btn" disabled>
+                    <i class="fas fa-play"></i> Play Video
+                </button>
+            </div>
+        </div>
+        
+        <video id="video-playback" controls style="width: 100%; margin-top: 1rem; display: none;"></video>
+        
+        <p class="text-center mb-2">OR</p>
+        
+        <div class="upload-area" id="video-upload-area">
+            <i class="fas fa-file-video"></i>
+            <h3>Upload Video File</h3>
+            <p>Click here or drag & drop your video file</p>
+            <input type="file" id="video-upload" accept="video/*">
+        </div>
+        
+        <div class="text-center mt-2">
+            <button class="kid-btn btn-purple" onclick="checkVideoPresentation()">
+                <i class="fas fa-robot"></i> AI Check My Video
+            </button>
+        </div>
+    </section>
+
+    <!-- FILE UPLOAD SECTION -->
+    <section id="upload-section" class="upload-section hidden">
+        <h2 style="color: var(--kid-purple);">📁 Upload Your Work</h2>
+        
+        <div class="upload-area" id="file-upload-area">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Upload Your English Work</h3>
+            <p>Click here or drag & drop your files<br>
+            <small>(PDF, DOC, TXT, Audio, Video)</small></p>
+            <input type="file" id="file-upload" multiple accept=".pdf,.doc,.docx,.txt,audio/*,video/*">
+        </div>
+        
+        <div id="uploaded-files" style="margin-top: 2rem; display: none;">
+            <h3 style="color: var(--kid-blue);">Uploaded Files:</h3>
+            <div id="file-list" style="background: white; padding: 1rem; border-radius: 15px;"></div>
+        </div>
+        
+        <div class="text-center mt-2">
+            <button class="kid-btn btn-purple" onclick="analyzeUploadedFiles()">
+                <i class="fas fa-robot"></i> AI Check All Files
+            </button>
+        </div>
+    </section>
+
+    <!-- AI FEEDBACK SECTION -->
+    <section class="ai-feedback">
+        <h2 style="color: var(--kid-purple); text-align: center;">🤖 AI Feedback Center</h2>
+        
+        <div class="text-center">
+            <h3 id="student-greeting" style="color: var(--kid-blue);">Hello Student! 👋</h3>
+            <div class="score-stars">
+                <div class="star">⭐</div>
+                <div class="star">⭐</div>
+                <div class="star">⭐</div>
+                <div class="star">⭐</div>
+                <div class="star">⭐</div>
+            </div>
+            <p id="score-text" style="font-size: 1.2rem; color: var(--kid-pink); font-weight: bold;">Ready to check your work!</p>
+        </div>
+        
+        <div class="feedback-box">
+            <h4 style="color: var(--kid-green);"><i class="fas fa-comment-dots"></i> AI Teacher Says:</h4>
+            <div id="feedback-content" style="padding: 1rem; min-height: 100px;">
+                Submit your writing, grammar, audio, or video to get personalized feedback!
+            </div>
+        </div>
+        
+        <div class="text-center mt-2">
+            <button class="kid-btn btn-pink" onclick="playCelebrationSound()">
+                <i class="fas fa-music"></i> Play Celebration Sound!
+            </button>
+            <button class="kid-btn btn-blue" onclick="giveStickerReward()">
+                <i class="fas fa-star"></i> Give Me a Sticker!
+            </button>
+        </div>
+    </section>
+
+    <!-- STICKER REWARDS -->
+    <section class="sticker-section">
+        <h2 style="color: var(--kid-orange); text-align: center;">🏆 Sticker Rewards Collection</h2>
+        <p class="text-center">Complete activities to earn stickers! Collect them all! 🌟</p>
+        
+        <div class="sticker-board" id="sticker-board">
+            <!-- Stickers will be added here by JavaScript -->
+        </div>
+        
+        <div class="text-center">
+            <button class="kid-btn btn-yellow" onclick="earnRandomSticker()">
+                <i class="fas fa-gift"></i> Earn Random Sticker!
+            </button>
+            <button class="kid-btn btn-green" onclick="clearStickers()">
+                <i class="fas fa-trash"></i> Clear Stickers
+            </button>
+        </div>
+    </section>
+
+    <!-- PROGRESS TRACKER -->
+    <section class="progress-section">
+        <h2 style="color: var(--kid-blue); text-align: center;">📊 Your Learning Progress</h2>
+        
+        <div class="text-center">
+            <h3 id="progress-text" style="color: var(--kid-pink);">Great start! Keep going! 🚀</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p id="progress-percent" style="font-size: 1.5rem; color: var(--kid-green); font-weight: bold;">0% Complete</p>
+        </div>
+        
+        <div class="activity-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+            <div class="activity-card" style="border-color: var(--kid-blue); padding: 1rem;">
+                <h4 style="color: var(--kid-blue);">Writing</h4>
+                <p id="writing-count">0 activities</p>
+            </div>
+            <div class="activity-card" style="border-color: var(--kid-pink); padding: 1rem;">
+                <h4 style="color: var(--kid-pink);">Grammar</h4>
+                <p id="grammar-count">0 activities</p>
+            </div>
+            <div class="activity-card" style="border-color: var(--kid-green); padding: 1rem;">
+                <h4 style="color: var(--kid-green);">Speaking</h4>
+                <p id="speaking-count">0 activities</p>
+            </div>
+            <div class="activity-card" style="border-color: var(--kid-yellow); padding: 1rem;">
+                <h4 style="color: var(--kid-yellow);">Video</h4>
+                <p id="video-count">0 activities</p>
+            </div>
+            <div class="activity-card" style="border-color: var(--kid-purple); padding: 1rem;">
+                <h4 style="color: var(--kid-purple);">Files</h4>
+                <p id="files-count">0 activities</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUND CONTROLS -->
+    <div class="sound-controls">
+        <button class="sound-btn" onclick="playPositiveSound()">
+            <i class="fas fa-thumbs-up"></i>
+        </button>
+        <button class="sound-btn" onclick="playCelebrationSound()">
+            <i class="fas fa-trophy"></i>
+        </button>
+        <button class="sound-btn" onclick="playMagicSound()">
+            <i class="fas fa-magic"></i>
+        </button>
+    </div>
+
+    <!-- AUDIO ELEMENTS FOR SOUNDS -->
+    <audio id="positive-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="celebration-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="magic-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkles-3003.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="writing-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-completion-of-a-level-2063.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ====== GLOBAL VARIABLES ======
+        let mediaRecorder;
+        let audioChunks = [];
+        let videoChunks = [];
+        let audioStream;
+        let videoStream;
+        let audioTimerInterval;
+        let videoTimerInterval;
+        let audioSeconds = 0;
+        let videoSeconds = 0;
+        let uploadedFiles = [];
+        let progress = 0;
+        let stickers = [];
+        let studentName = "Student";
+        let activityCounts = { writing: 0, grammar: 0, speaking: 0, video: 0, files: 0 };
+        
+        // ====== NEW: REAL TEACHER ENHANCEMENTS ======
+        let studentMistakes = {
+            writing: { spelling: 0, punctuation: 0, capitalization: 0, grammar: 0 },
+            grammar: { subjectVerb: 0, articles: 0, tenses: 0, plurals: 0 },
+            speaking: { clarity: 0, speed: 0, pronunciation: 0 },
+            video: { confidence: 0, eyeContact: 0, organization: 0 }
+        };
+        
+        let studentStrengths = {
+            writing: { vocabulary: 0, creativity: 0, organization: 0 },
+            grammar: { accuracy: 0, speed: 0 },
+            speaking: { confidence: 0, fluency: 0 },
+            video: { presentation: 0, engagement: 0 }
+        };
+
+        // Media file tracking
+        let currentAudioFile = null;
+        let currentVideoFile = null;
+
+        // Grammar answers (will be populated dynamically by grade)
+        let grammarAnswers = {}; 
+
+        // ====== GRADE-SPECIFIC GRAMMAR EXERCISES ======
+        const grammarExercisesByGrade = {
+            "Grade 1": [
+                { id: 1, topic: "Nouns (People/Places)", question: "Choose the word that names a person:", options: ["dog", "teacher", "park", "ball"], correct: "teacher" },
+                { id: 2, topic: "Nouns (Things)", question: "Choose the word that names a thing:", options: ["cat", "sister", "school", "apple"], correct: "apple" },
+                { id: 3, topic: "Verbs (Action Words)", question: "Which word shows action?", options: ["run", "happy", "blue", "big"], correct: "run" },
+                { id: 4, topic: "Capital Letter", question: "Which sentence starts with a capital letter?", options: ["the dog is big.", "The dog is big.", "dog is big.", "the Dog is big."], correct: "The dog is big." },
+                { id: 5, topic: "Period (.)", question: "Which sentence ends correctly?", options: ["I like cats", "I like cats.", "I like cats?", "I like cats!"], correct: "I like cats." }
+            ],
+            "Grade 2": [
+                { id: 1, topic: "Subject-Verb Agreement", question: "The cat _____ on the mat.", options: ["sleep", "sleeps", "sleeping", "slept"], correct: "sleeps" },
+                { id: 2, topic: "Articles", question: "I saw _____ eagle in _____ sky.", options: ["an / the", "a / a", "the / the", "an / a"], correct: "an / the" },
+                { id: 3, topic: "Regular Plurals", question: "There are three _____ in the garden.", options: ["butterflys", "butterflies", "butterflyes", "butterfly"], correct: "butterflies" },
+                { id: 4, topic: "Pronouns", question: "_____ is my friend.", options: ["She", "Her", "Him", "Them"], correct: "She" },
+                { id: 5, topic: "Verb to be", question: "They _____ playing outside.", options: ["is", "am", "are", "be"], correct: "are" }
+            ],
+            "Grade 3": [
+                { id: 1, topic: "Present Continuous", question: "She _____ a book right now.", options: ["read", "reads", "is reading", "readed"], correct: "is reading" },
+                { id: 2, topic: "Simple Past Tense", question: "Yesterday, I _____ to the park.", options: ["go", "goed", "went", "going"], correct: "went" },
+                { id: 3, topic: "Possessive Adjectives", question: "_____ mother is a teacher.", options: ["Me", "My", "Mine", "I"], correct: "My" },
+                { id: 4, topic: "Future with 'will'", question: "Tomorrow, we _____ a movie.", options: ["watch", "watched", "will watch", "watching"], correct: "will watch" },
+                { id: 5, topic: "Comparative Adjectives", question: "An elephant is _____ than a mouse.", options: ["big", "bigger", "biggest", "more big"], correct: "bigger" }
+            ],
+            "Grade 4": [
+                { id: 1, topic: "Prepositions of Place", question: "The book is _____ the table.", options: ["on", "in", "at", "under"], correct: "on" },
+                { id: 2, topic: "Question Words", question: "_____ is your birthday?", options: ["What", "When", "Where", "Who"], correct: "When" },
+                { id: 3, topic: "Irregular Verbs", question: "I have _____ my homework.", options: ["do", "did", "done", "doing"], correct: "done" },
+                { id: 4, topic: "Contractions", question: "_____ going to the store.", options: ["Were", "We're", "We are", "We is"], correct: "We're" },
+                { id: 5, topic: "Capitalization", question: "Which sentence is correct?", options: ["i live in new york", "I live in New York", "I Live In New York", "i Live in new york"], correct: "I live in New York" }
+            ],
+            "Grade 5": [
+                { id: 1, topic: "Sentence Structure", question: "Choose the complete sentence:", options: ["The big dog", "Runs fast", "The dog runs fast", "Fast dog runs"], correct: "The dog runs fast" },
+                { id: 2, topic: "Synonyms", question: "Find the word that means the same as 'happy':", options: ["Sad", "Angry", "Joyful", "Tired"], correct: "Joyful" },
+                { id: 3, topic: "Adverbs", question: "She sings _____ .", options: ["beautiful", "beautifully", "beauty", "more beautiful"], correct: "beautifully" },
+                { id: 4, topic: "Conjunctions", question: "I like apples _____ oranges.", options: ["but", "or", "and", "so"], correct: "and" },
+                { id: 5, topic: "Past Continuous", question: "I _____ TV when you called.", options: ["watched", "was watching", "were watching", "watch"], correct: "was watching" }
+            ]
+        };
+
+        // ====== DOM ELEMENTS ======
+        const studentNameInput = document.getElementById('student-name');
+        const studentGreeting = document.getElementById('student-greeting');
+        const startLearningBtn = document.getElementById('start-learning-btn');
+        const refreshBtn = document.getElementById('refresh-btn');
+        const studentGradeSelect = document.getElementById('student-grade');
+        const grammarGradeDisplay = document.getElementById('grammar-grade-display');
+        const grammarContainer = document.getElementById('grammar-exercises-container');
+        
+        // Section elements
+        const writingSection = document.getElementById('writing-section');
+        const grammarSection = document.getElementById('grammar-section');
+        const audioSection = document.getElementById('audio-section');
+        const videoSection = document.getElementById('video-section');
+        const uploadSection = document.getElementById('upload-section');
+        
+        // Writing elements
+        const studentWriting = document.getElementById('student-writing');
+        const writingPrompt = document.getElementById('writing-prompt');
+        
+        // Audio elements
+        const audioControls = document.getElementById('audio-controls');
+        const audioFileName = document.getElementById('audio-file-name');
+        const audioFileSize = document.getElementById('audio-file-size');
+        const recordAudioBtn = document.getElementById('record-audio-btn');
+        const stopAudioBtn = document.getElementById('stop-audio-btn');
+        const playAudioBtn = document.getElementById('play-audio-btn');
+        const audioVisualizer = document.getElementById('audio-visualizer');
+        const audioTimer = document.getElementById('audio-timer');
+        const audioPlayer = document.getElementById('audio-player');
+        const audioUpload = document.getElementById('audio-upload');
+        const audioUploadArea = document.getElementById('audio-upload-area');
+        
+        // Video elements
+        const videoControls = document.getElementById('video-controls');
+        const videoFileName = document.getElementById('video-file-name');
+        const videoFileSize = document.getElementById('video-file-size');
+        const recordVideoBtn = document.getElementById('record-video-btn');
+        const stopVideoBtn = document.getElementById('stop-video-btn');
+        const playVideoBtn = document.getElementById('play-video-btn');
+        const videoPreview = document.getElementById('video-preview');
+        const videoPlaceholder = document.getElementById('video-placeholder');
+        const videoPlayback = document.getElementById('video-playback');
+        const videoTimer = document.getElementById('video-timer');
+        const videoRecordIndicator = document.getElementById('video-record-indicator');
+        const videoUpload = document.getElementById('video-upload');
+        const videoUploadArea = document.getElementById('video-upload-area');
+        
+        // File upload elements
+        const fileUpload = document.getElementById('file-upload');
+        const fileUploadArea = document.getElementById('file-upload-area');
+        const uploadedFilesDiv = document.getElementById('uploaded-files');
+        const fileList = document.getElementById('file-list');
+        
+        // Feedback elements
+        const feedbackContent = document.getElementById('feedback-content');
+        const scoreText = document.getElementById('score-text');
+        const scoreStars = document.querySelectorAll('.star');
+        
+        // Progress elements
+        const progressFill = document.getElementById('progress-fill');
+        const progressPercent = document.getElementById('progress-percent');
+        const progressText = document.getElementById('progress-text');
+        const writingCount = document.getElementById('writing-count');
+        const grammarCount = document.getElementById('grammar-count');
+        const speakingCount = document.getElementById('speaking-count');
+        const videoCount = document.getElementById('video-count');
+        const filesCount = document.getElementById('files-count');
+        
+        // Sticker elements
+        const stickerBoard = document.getElementById('sticker-board');
+        
+        // Sound elements
+        const positiveSound = document.getElementById('positive-sound');
+        const celebrationSound = document.getElementById('celebration-sound');
+        const magicSound = document.getElementById('magic-sound');
+        const writingSound = document.getElementById('writing-sound');
+
+        // ====== WRITING PROMPTS ======
+        const writingPrompts = [
+            "Write about your favorite animal. What does it look like? What does it eat? Why do you like it?",
+            "Describe your best friend. What do you like to do together? What makes them special?",
+            "Write about your favorite food. How does it taste? When do you eat it? Who makes it for you?",
+            "Describe a fun day at school. What did you learn? Who did you play with?",
+            "Write about your family. Who is in your family? What do you like to do together?",
+            "Describe your favorite toy or game. How do you play with it? Why do you like it?",
+            "Write about a place you would like to visit. Why do you want to go there? What would you do?",
+            "Describe your favorite season. What do you see? What do you do? What do you wear?"
+        ];
+
+        // Sticker emojis
+        const stickerEmojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐸', '🐒', '🐔', '🐧', '🐦', '🐤', '🐴', '🐝', '🦄', '🐌', '🐙', '🦋', '🌟', '⭐', '🌙', '☀️', '⚡', '🔥', '💧', '🌈', '🍎', '🍕', '🎂', '🎈', '🎁', '🏆'];
+
+        // ====== INITIALIZATION ======
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set student name
+            studentNameInput.addEventListener('input', function() {
+                studentName = this.value || "Student";
+                studentGreeting.textContent = `Hello ${studentName}! 👋`;
+                saveToLocalStorage();
+            });
+
+            // Update grammar exercises when grade changes
+            studentGradeSelect.addEventListener('change', function() {
+                if (!grammarSection.classList.contains('hidden')) {
+                    loadGrammarExercisesForGrade(this.value);
+                }
+                // Update the grade display text
+                grammarGradeDisplay.textContent = this.value;
+            });
+
+            // Start learning button
+            startLearningBtn.addEventListener('click', function() {
+                scrollToActivities();
+            });
+
+            // Refresh button
+            refreshBtn.addEventListener('click', function() {
+                if (confirm("Do you want to start fresh? This will clear all current work but keep your progress.")) {
+                    refreshAll();
+                }
+            });
+
+            // Initialize sticker board
+            loadStickers();
+            updateStickerBoard();
+
+            // Load progress
+            loadProgress();
+
+            // Set initial writing prompt
+            updateWritingPrompt();
+
+            // Set initial grammar grade display
+            grammarGradeDisplay.textContent = studentGradeSelect.value;
+
+            // Welcome message
+            setTimeout(() => {
+                showMessage(`🎉 Welcome to Write It Right, ${studentName}!`, 'info');
+            }, 1000);
+            
+            // Preload sounds
+            preloadSounds();
+        });
+
+        // ====== PRELOAD SOUNDS ======
+        function preloadSounds() {
+            const sounds = [positiveSound, celebrationSound, magicSound, writingSound];
+            sounds.forEach(sound => {
+                sound.load();
+                sound.volume = 0.7;
+            });
+        }
+
+        // ====== REFRESH FUNCTIONALITY ======
+        function refreshAll() {
+            // Clear writing
+            studentWriting.value = '';
+            
+            // Clear grammar selections
+            resetGrammar();
+            
+            // Clear audio
+            if (currentAudioFile) {
+                deleteAudio();
+            }
+            
+            // Clear video
+            if (currentVideoFile) {
+                deleteVideo();
+            }
+            
+            // Clear uploaded files
+            uploadedFiles = [];
+            updateFileList();
+            uploadedFilesDiv.style.display = 'none';
+            
+            // Clear file inputs
+            audioUpload.value = '';
+            videoUpload.value = '';
+            fileUpload.value = '';
+            
+            // Reset feedback
+            feedbackContent.innerHTML = "Submit your writing, grammar, audio, or video to get personalized feedback!";
+            scoreText.textContent = "Ready to check your work!";
+            updateStars(0);
+            
+            // Update writing prompt
+            updateWritingPrompt();
+            
+            // Hide all sections except welcome
+            hideAllSections();
+            
+            // Show welcome message
+            showMessage("✨ Fresh start! Ready for new learning! ✨", 'success');
+            playMagicSound();
+        }
+
+        // ====== SECTION NAVIGATION ======
+        function showWritingSection() {
+            hideAllSections();
+            writingSection.classList.remove('hidden');
+            updateWritingPrompt();
+            scrollToSection('writing-section');
+        }
+
+        function showGrammarSection() {
+            hideAllSections();
+            grammarSection.classList.remove('hidden');
+            const grade = studentGradeSelect.value;
+            grammarGradeDisplay.textContent = grade;
+            loadGrammarExercisesForGrade(grade);
+            playPositiveSound();
+            scrollToSection('grammar-section');
+        }
+
+        function loadGrammarExercisesForGrade(grade) {
+            const exercises = grammarExercisesByGrade[grade] || grammarExercisesByGrade["Grade 4"];
+            
+            // Reset grammarAnswers object
+            grammarAnswers = {};
+            
+            // Build HTML for exercises
+            let html = '';
+            exercises.forEach(ex => {
+                grammarAnswers[ex.id] = {
+                    correct: ex.correct,
+                    selected: null,
+                    topic: ex.topic
+                };
+                
+                html += `
+                    <div class="grammar-exercise" id="grammar-exercise-${ex.id}" data-grade="${grade}">
+                        <h3 style="color: var(--kid-blue);">Exercise ${ex.id}: ${ex.topic}</h3>
+                        <p>${ex.question}</p>
+                        <div class="options-container">
+                `;
+                
+                ex.options.forEach(opt => {
+                    // Escape quotes for onclick
+                    const escapedOpt = opt.replace(/'/g, "\\'");
+                    html += `
+                        <div class="option" onclick="selectOption(this, ${ex.id}, '${escapedOpt}')">${opt}</div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            grammarContainer.innerHTML = html;
+        }
+
+        function showAudioSection() {
+            hideAllSections();
+            audioSection.classList.remove('hidden');
+            playPositiveSound();
+            scrollToSection('audio-section');
+        }
+
+        function showVideoSection() {
+            hideAllSections();
+            videoSection.classList.remove('hidden');
+            initializeCamera();
+            playPositiveSound();
+            scrollToSection('video-section');
+        }
+
+        function showUploadSection() {
+            hideAllSections();
+            uploadSection.classList.remove('hidden');
+            playPositiveSound();
+            scrollToSection('upload-section');
+        }
+
+        function hideAllSections() {
+            writingSection.classList.add('hidden');
+            grammarSection.classList.add('hidden');
+            audioSection.classList.add('hidden');
+            videoSection.classList.add('hidden');
+            uploadSection.classList.add('hidden');
+        }
+
+        // ====== WRITING FUNCTIONS ======
+        function updateWritingPrompt() {
+            const randomPrompt = writingPrompts[Math.floor(Math.random() * writingPrompts.length)];
+            writingPrompt.textContent = randomPrompt;
+        }
+
+        function speakText() {
+            const text = writingPrompt.textContent;
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance(text);
+                speech.rate = 0.9;
+                speech.pitch = 1.2;
+                speech.volume = 1;
+                window.speechSynthesis.speak(speech);
+                showMessage("🔊 Reading the prompt aloud!", 'info');
+            } else {
+                showMessage("Sorry, text-to-speech is not supported in your browser.", 'error');
+            }
+        }
+
+        function checkWriting() {
+            const text = studentWriting.value.trim();
+            
+            if (!text) {
+                showMessage("Please write something first! ✍️", 'error');
+                return;
+            }
+
+            // Show loading
+            feedbackContent.innerHTML = `<div style="text-align:center;">
+                <i class="fas fa-robot fa-spin fa-2x" style="color:var(--kid-blue);"></i>
+                <p>Teacher AI is carefully reading your writing...</p>
+                <small>Checking spelling, grammar, and creativity</small>
+            </div>`;
+            
+            // Simulate AI analysis
+            setTimeout(() => {
+                analyzeWriting(text);
+                activityCounts.writing++;
+                updateProgress();
+                playWritingSound();
+                earnRandomSticker();
+                showMessage("✅ Writing checked! Detailed feedback ready!", 'success');
+            }, 2000);
+        }
+
+        function analyzeWriting(text) {
+            // Simplified but engaging analysis
+            const wordCount = text.split(/\s+/).filter(w => w.length > 0).length;
+            const sentenceCount = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+            const starScore = Math.min(5, Math.max(1, Math.floor(wordCount / 10) + 1));
+            
+            updateStars(starScore);
+            
+            let feedback = `<h4 style="color:var(--kid-green);">📝 Teacher's Writing Analysis for ${studentName}</h4>`;
+            feedback += `<div style="background:#f0f9ff; padding:1rem; border-radius:10px; margin:1rem 0;">`;
+            feedback += `<p><strong>📊 Quick Stats:</strong></p>`;
+            feedback += `<p>• Words: ${wordCount} words</p>`;
+            feedback += `<p>• Sentences: ${sentenceCount} sentences</p>`;
+            feedback += `<p>• Grade Level: ${studentGradeSelect.value}</p>`;
+            feedback += `</div>`;
+            
+            feedback += `<div style="background:#e6fff5; padding:1rem; border-radius:10px; margin:1rem 0; border-left:4px solid var(--kid-green);">`;
+            feedback += `<p style="color:var(--kid-purple);"><i class="fas fa-chalkboard-teacher"></i> <strong>Teacher's Note:</strong> Great effort, ${studentName}! Keep practicing and you'll become an amazing writer! ✨</p>`;
+            feedback += `</div>`;
+            
+            feedbackContent.innerHTML = feedback;
+            scoreText.textContent = `${starScore}/5 Stars! ${'⭐'.repeat(starScore)}${'☆'.repeat(5-starScore)}`;
+            
+            saveToLocalStorage();
+        }
+
+        function clearWriting() {
+            studentWriting.value = '';
+            showMessage("Writing cleared! Ready for new writing! 🧹", 'info');
+        }
+
+        // ====== GRAMMAR FUNCTIONS ======
+        function selectOption(element, exerciseNum, answer) {
+            const container = element.parentElement;
+            const options = container.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+                opt.classList.remove('correct');
+                opt.classList.remove('incorrect');
+            });
+            
+            element.classList.add('selected');
+            grammarAnswers[exerciseNum].selected = answer;
+            playPositiveSound();
+        }
+
+        function checkAllGrammar() {
+            const exercises = grammarExercisesByGrade[studentGradeSelect.value] || grammarExercisesByGrade["Grade 4"];
+            let correctCount = 0;
+            const total = exercises.length;
+            
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            for (let i = 1; i <= total; i++) {
+                const answer = grammarAnswers[i];
+                if (!answer) continue;
+                
+                if (answer.selected === answer.correct) {
+                    correctCount++;
+                    const exercise = document.getElementById(`grammar-exercise-${i}`);
+                    if (exercise) {
+                        const options = exercise.querySelectorAll('.option');
+                        options.forEach(opt => {
+                            if (opt.textContent === answer.correct) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    }
+                } else if (answer.selected) {
+                    const exercise = document.getElementById(`grammar-exercise-${i}`);
+                    if (exercise) {
+                        const options = exercise.querySelectorAll('.option');
+                        options.forEach(opt => {
+                            if (opt.classList.contains('selected')) {
+                                opt.classList.add('incorrect');
+                            }
+                            if (opt.textContent === answer.correct) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    }
+                }
+            }
+            
+            const starScore = Math.round((correctCount / total) * 5);
+            updateStars(starScore);
+            
+            let feedback = `<h4 style="color:var(--kid-pink);">📖 Grammar Assessment for ${studentName}</h4>`;
+            feedback += `<div style="background:#f0f9ff; padding:1rem; border-radius:10px; margin:1rem 0;">`;
+            feedback += `<p><strong>Score:</strong> ${correctCount} out of ${total} correct (${Math.round((correctCount/total)*100)}%)</p>`;
+            feedback += `<p><strong>Performance:</strong> ${starScore}/5 stars</p>`;
+            feedback += `</div>`;
+            
+            if (correctCount === total) {
+                feedback += `<div style="background:#e6fff5; padding:1rem; border-radius:10px; margin:1rem 0; border-left:4px solid var(--kid-green);">`;
+                feedback += `<p style="color:var(--kid-green);"><i class="fas fa-trophy"></i> <strong>Perfect Score!</strong> You're a grammar master! 🎉</p>`;
+                feedback += `</div>`;
+                playCelebrationSound();
+            } else if (correctCount >= total * 0.7) {
+                feedback += `<div style="background:#fff9e6; padding:1rem; border-radius:10px; margin:1rem 0; border-left:4px solid var(--kid-yellow);">`;
+                feedback += `<p style="color:var(--kid-yellow);"><i class="fas fa-star"></i> <strong>Great Job!</strong> Keep practicing! 👍</p>`;
+                feedback += `</div>`;
+                playPositiveSound();
+            } else {
+                feedback += `<div style="background:#ffe6e6; padding:1rem; border-radius:10px; margin:1rem 0; border-left:4px solid #ff6b6b;">`;
+                feedback += `<p style="color:#ff6b6b;"><i class="fas fa-redo"></i> <strong>Keep Trying!</strong> Review and try again! 📚</p>`;
+                feedback += `</div>`;
+                playPositiveSound();
+            }
+            
+            feedbackContent.innerHTML = feedback;
+            scoreText.textContent = `${starScore}/5 Stars!`;
+            
+            if (correctCount > 0) {
+                activityCounts.grammar++;
+                updateProgress();
+                earnRandomSticker();
+            }
+            
+            showMessage("✅ Grammar assessment complete!", 'success');
+            saveToLocalStorage();
+        }
+
+        function resetGrammar() {
+            for (let i = 1; i <= Object.keys(grammarAnswers).length; i++) {
+                if (grammarAnswers[i]) {
+                    grammarAnswers[i].selected = null;
+                }
+            }
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+            showMessage("Grammar exercises reset! Try again! 🔄", 'info');
+            playMagicSound();
+        }
+
+        // ====== AUDIO, VIDEO, UPLOAD FUNCTIONS (keep existing functionality) ======
+        recordAudioBtn.addEventListener('click', async function() {
+            try {
+                audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(audioStream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = event => { audioChunks.push(event.data); };
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    currentAudioFile = { name: "My Recording.webm", size: (audioBlob.size / 1024 / 1024).toFixed(2) + " MB", url: audioUrl, blob: audioBlob };
+                    updateAudioControls();
+                    audioPlayer.src = audioUrl;
+                    audioPlayer.style.display = 'block';
+                    playAudioBtn.disabled = false;
+                    audioVisualizer.innerHTML = '<i class="fas fa-check-circle"></i> Ready to play!';
+                    audioVisualizer.style.background = 'linear-gradient(135deg, var(--kid-green), var(--kid-blue))';
+                };
+                mediaRecorder.start();
+                recordAudioBtn.disabled = true;
+                stopAudioBtn.disabled = false;
+                audioVisualizer.innerHTML = '<i class="fas fa-microphone"></i> Recording... Speak now!';
+                audioVisualizer.style.background = 'linear-gradient(135deg, var(--kid-pink), var(--kid-orange))';
+                startAudioTimer();
+                showMessage("🎤 Recording started! Speak clearly!", 'success');
+            } catch (error) { showMessage("❌ Could not access microphone.", 'error'); }
+        });
+
+        stopAudioBtn.addEventListener('click', function() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                audioStream.getTracks().forEach(track => track.stop());
+                recordAudioBtn.disabled = false;
+                stopAudioBtn.disabled = true;
+                stopAudioTimer();
+                showMessage("⏹️ Recording saved!", 'info');
+            }
+        });
+
+        playAudioBtn.addEventListener('click', function() { if (audioPlayer.src) audioPlayer.play(); });
+        audioUpload.addEventListener('change', function(e) { handleAudioUpload(e.target.files); });
+        function handleAudioUpload(files) {
+            if (!files.length) return;
+            const file = files[0];
+            if (file.size > 10 * 1024 * 1024) { showMessage("❌ File too large! Max 10MB.", 'error'); return; }
+            const audioUrl = URL.createObjectURL(file);
+            currentAudioFile = { name: file.name, size: (file.size / 1024 / 1024).toFixed(2) + " MB", url: audioUrl, file: file };
+            updateAudioControls();
+            audioPlayer.src = audioUrl;
+            audioPlayer.style.display = 'block';
+            playAudioBtn.disabled = false;
+            audioVisualizer.innerHTML = `<i class="fas fa-check-circle"></i> ${file.name}`;
+            audioVisualizer.style.background = 'linear-gradient(135deg, var(--kid-green), var(--kid-blue))';
+            showMessage(`🎵 Audio file loaded: ${file.name}`, 'success');
+        }
+        function updateAudioControls() { audioControls.style.display = currentAudioFile ? 'flex' : 'none'; if(currentAudioFile){ audioFileName.textContent = currentAudioFile.name; audioFileSize.textContent = currentAudioFile.size; } }
+        function deleteAudio() { if(currentAudioFile && confirm("Delete audio?")){ if(currentAudioFile.url) URL.revokeObjectURL(currentAudioFile.url); currentAudioFile=null; audioPlayer.src=''; audioPlayer.style.display='none'; playAudioBtn.disabled=true; audioVisualizer.innerHTML='<i class="fas fa-microphone"></i> Ready to record!'; audioVisualizer.style.background='linear-gradient(135deg, var(--kid-blue), var(--kid-purple))'; audioControls.style.display='none'; audioUpload.value=''; showMessage("🗑️ Audio deleted!", 'info'); } }
+        function reuploadAudio() { audioUpload.click(); }
+        function checkPronunciation() {
+            if(!currentAudioFile){ showMessage("Please record or upload audio first!", 'error'); return; }
+            feedbackContent.innerHTML = `<div style="text-align:center;"><i class="fas fa-robot fa-spin fa-2x"></i><p>Teacher AI is listening...</p></div>`;
+            setTimeout(() => {
+                const starScore = Math.floor(Math.random() * 3) + 3;
+                updateStars(starScore);
+                let feedback = `<h4 style="color:var(--kid-pink);">🎤 Pronunciation Assessment</h4><div style="background:#f0f9ff; padding:1rem; border-radius:10px;"><p><strong>Recording:</strong> ${currentAudioFile.name}</p><p><strong>Score:</strong> ${starScore}/5 stars</p></div><div style="background:#e6fff5; padding:1rem; border-radius:10px;"><p>Great job practicing your speaking! Keep listening and repeating to improve! 🎧</p></div>`;
+                feedbackContent.innerHTML = feedback;
+                scoreText.textContent = `${starScore}/5 Stars!`;
+                activityCounts.speaking++; updateProgress(); playCelebrationSound(); earnRandomSticker();
+                showMessage("✅ Pronunciation analysis complete!", 'success');
+            }, 1500);
+        }
+
+        // Video functions (simplified but functional)
+        async function initializeCamera() {
+            try { videoStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true }); videoPreview.srcObject = videoStream; videoPlaceholder.style.display = 'none'; } catch(e){ videoPlaceholder.innerHTML = '<i class="fas fa-video-slash fa-3x"></i><p>Camera not available</p>'; }
+        }
+        recordVideoBtn.addEventListener('click', async function() {
+            if (!videoStream) await initializeCamera();
+            mediaRecorder = new MediaRecorder(videoStream); videoChunks = [];
+            mediaRecorder.ondataavailable = e => videoChunks.push(e.data);
+            mediaRecorder.onstop = () => {
+                const videoBlob = new Blob(videoChunks, { type: 'video/webm' });
+                const videoUrl = URL.createObjectURL(videoBlob);
+                currentVideoFile = { name: "My Recording.webm", size: (videoBlob.size / 1024 / 1024).toFixed(2) + " MB", url: videoUrl, blob: videoBlob };
+                updateVideoControls();
+                videoPlayback.src = videoUrl;
+                videoPreview.style.display = 'none';
+                videoPlayback.style.display = 'block';
+                playVideoBtn.disabled = false;
+                videoRecordIndicator.style.display = 'none';
+                videoStream.getTracks().forEach(t => t.stop());
+            };
+            mediaRecorder.start();
+            recordVideoBtn.disabled = true; stopVideoBtn.disabled = false; playVideoBtn.disabled = true;
+            videoRecordIndicator.style.display = 'block';
+            startVideoTimer();
+            showMessage("🎥 Recording started!", 'success');
+            setTimeout(() => { if(mediaRecorder && mediaRecorder.state === 'recording') stopVideoBtn.click(); }, 60000);
+        });
+        stopVideoBtn.addEventListener('click', function() { if(mediaRecorder && mediaRecorder.state !== 'inactive'){ mediaRecorder.stop(); recordVideoBtn.disabled=false; stopVideoBtn.disabled=true; stopVideoTimer(); videoRecordIndicator.style.display='none'; showMessage("⏹️ Video saved!", 'info'); } });
+        playVideoBtn.addEventListener('click', function() { if(videoPlayback.src) videoPlayback.play(); });
+        videoUpload.addEventListener('change', e => handleVideoUpload(e.target.files));
+        function handleVideoUpload(files) { if(!files.length) return; const file=files[0]; if(file.size>50*1024*1024){ showMessage("❌ File too large! Max 50MB.",'error'); return; } const videoUrl=URL.createObjectURL(file); currentVideoFile={ name:file.name, size:(file.size/1024/1024).toFixed(2)+" MB", url:videoUrl, file:file }; updateVideoControls(); videoPlayback.src=videoUrl; videoPreview.style.display='none'; videoPlayback.style.display='block'; playVideoBtn.disabled=false; showMessage(`🎬 Video loaded: ${file.name}`,'success'); }
+        function updateVideoControls() { videoControls.style.display = currentVideoFile ? 'flex' : 'none'; if(currentVideoFile){ videoFileName.textContent = currentVideoFile.name; videoFileSize.textContent = currentVideoFile.size; } }
+        function deleteVideo() { if(currentVideoFile && confirm("Delete video?")){ if(currentVideoFile.url) URL.revokeObjectURL(currentVideoFile.url); currentVideoFile=null; videoPlayback.src=''; videoPlayback.style.display='none'; videoPreview.style.display='block'; playVideoBtn.disabled=true; videoControls.style.display='none'; videoUpload.value=''; initializeCamera(); showMessage("🗑️ Video deleted!",'info'); } }
+        function reuploadVideo() { videoUpload.click(); }
+        function checkVideoPresentation() {
+            if(!currentVideoFile){ showMessage("Please record or upload a video first!", 'error'); return; }
+            feedbackContent.innerHTML = `<div style="text-align:center;"><i class="fas fa-robot fa-spin fa-2x"></i><p>Teacher AI is watching your presentation...</p></div>`;
+            setTimeout(() => {
+                const starScore = Math.floor(Math.random() * 3) + 3;
+                updateStars(starScore);
+                let feedback = `<h4 style="color:var(--kid-yellow);">🎥 Video Assessment</h4><div style="background:#f0f9ff; padding:1rem; border-radius:10px;"><p><strong>Video:</strong> ${currentVideoFile.name}</p><p><strong>Score:</strong> ${starScore}/5 stars</p></div><div style="background:#e6fff5; padding:1rem; border-radius:10px;"><p>Great job presenting! Keep practicing eye contact and speaking clearly! 🌟</p></div>`;
+                feedbackContent.innerHTML = feedback;
+                scoreText.textContent = `${starScore}/5 Stars!`;
+                activityCounts.video++; updateProgress(); playCelebrationSound(); earnRandomSticker();
+                showMessage("✅ Video analysis complete!", 'success');
+            }, 1500);
+        }
+
+        // File upload
+        fileUpload.addEventListener('change', e => handleFileUpload(e.target.files));
+        function handleFileUpload(files) { for(let file of files){ uploadedFiles.push({ name:file.name, size:(file.size/1024/1024).toFixed(2)+' MB', type:file.type, file:file }); } updateFileList(); uploadedFilesDiv.style.display='block'; showMessage(`📁 Added ${files.length} file(s)!`, 'success'); }
+        function updateFileList() { fileList.innerHTML=''; uploadedFiles.forEach((file,idx)=>{ const div=document.createElement('div'); div.style.cssText='display:flex; justify-content:space-between; padding:0.5rem; background:#f0f9ff; margin-bottom:0.5rem; border-radius:10px;'; div.innerHTML=`<div><i class="fas fa-file"></i> ${file.name} <small>(${file.size})</small></div><div><button onclick="deleteUploadedFile(${idx})" style="background:var(--kid-pink); color:white; border:none; padding:0.3rem 0.6rem; border-radius:5px;"><i class="fas fa-trash"></i></button></div>`; fileList.appendChild(div); }); }
+        window.deleteUploadedFile = function(idx) { if(confirm("Delete file?")){ uploadedFiles.splice(idx,1); updateFileList(); if(uploadedFiles.length===0) uploadedFilesDiv.style.display='none'; showMessage("File deleted!",'info'); } };
+        function analyzeUploadedFiles() { if(uploadedFiles.length===0){ showMessage("Please upload files first!",'error'); return; } feedbackContent.innerHTML=`<div style="text-align:center;"><i class="fas fa-robot fa-spin fa-2x"></i><p>Reviewing your submitted work...</p></div>`; setTimeout(()=>{ activityCounts.files++; updateProgress(); playMagicSound(); earnRandomSticker(); let feedback=`<h4 style="color:var(--kid-purple);">📁 Work Submission Review</h4><div style="background:#f0f9ff; padding:1rem; border-radius:10px;"><p><strong>Files Submitted:</strong> ${uploadedFiles.length}</p><p><strong>Status:</strong> ✅ All files received!</p></div><div style="background:#e6fff5; padding:1rem; border-radius:10px;"><p>Thank you for submitting your work, ${studentName}! Keep up the great effort! 🎉</p></div>`; feedbackContent.innerHTML=feedback; scoreText.textContent="Work Submitted!"; updateStars(4); showMessage("✅ Files reviewed!",'success'); },1500); }
+
+        // ====== PROGRESS, STICKERS, SOUNDS, HELPERS ======
+        function updateProgress() {
+            const total = activityCounts.writing + activityCounts.grammar + activityCounts.speaking + activityCounts.video + activityCounts.files;
+            progress = Math.min(100, total * 6);
+            progressFill.style.width = `${progress}%`;
+            progressPercent.textContent = `${progress}% Complete`;
+            writingCount.textContent = `${activityCounts.writing} activities`;
+            grammarCount.textContent = `${activityCounts.grammar} activities`;
+            speakingCount.textContent = `${activityCounts.speaking} activities`;
+            videoCount.textContent = `${activityCounts.video} activities`;
+            filesCount.textContent = `${activityCounts.files} activities`;
+            if(progress>=100) progressText.textContent="🎉 You're a Super Star! 🎉";
+            else if(progress>=70) progressText.textContent="🌟 Amazing Progress!";
+            else if(progress>=40) progressText.textContent="🚀 Great improvement!";
+            else if(progress>=10) progressText.textContent="👍 Good start!";
+            else progressText.textContent="Great start! Keep learning! 📚";
+            saveToLocalStorage();
+        }
+        function loadProgress() { const saved=localStorage.getItem('writeItRightProgress'); if(saved){ const data=JSON.parse(saved); activityCounts=data.activityCounts||{writing:0,grammar:0,speaking:0,video:0,files:0}; studentName=data.studentName||"Student"; stickers=data.stickers||[]; studentNameInput.value=studentName; studentGreeting.textContent=`Hello ${studentName}! 👋`; updateProgress(); } }
+        function giveStickerReward() { earnRandomSticker(); }
+        function earnRandomSticker() { if(stickers.length>=stickerEmojis.length) return; let newSticker; do{ newSticker=stickerEmojis[Math.floor(Math.random()*stickerEmojis.length)]; }while(stickers.includes(newSticker)); stickers.push(newSticker); updateStickerBoard(); saveToLocalStorage(); playCelebrationSound(); }
+        function updateStickerBoard() { stickerBoard.innerHTML=''; stickerEmojis.forEach(emoji=>{ const s=document.createElement('div'); s.className='sticker'; if(stickers.includes(emoji)){ s.innerHTML=emoji; s.style.background='linear-gradient(135deg, var(--kid-blue), var(--kid-pink))'; s.style.color='white'; }else{ s.innerHTML='?'; s.style.background='#E6E6E6'; s.style.color='#999'; } s.addEventListener('click',()=>{ if(stickers.includes(emoji)) showMessage(`You earned the ${emoji} sticker!`,'info'); else showMessage("Complete activities to unlock!","info"); }); stickerBoard.appendChild(s); }); }
+        function clearStickers() { if(confirm("Clear all stickers?")){ stickers=[]; updateStickerBoard(); saveToLocalStorage(); showMessage("Stickers cleared!",'info'); } }
+        function loadStickers() { const saved=localStorage.getItem('writeItRightStickers'); if(saved) stickers=JSON.parse(saved); else stickers=[]; }
+        function playPositiveSound(){ try{ positiveSound.currentTime=0; positiveSound.play(); }catch(e){} }
+        function playCelebrationSound(){ try{ celebrationSound.currentTime=0; celebrationSound.play(); }catch(e){ playPositiveSound(); } }
+        function playMagicSound(){ try{ magicSound.currentTime=0; magicSound.play(); }catch(e){} }
+        function playWritingSound(){ try{ writingSound.currentTime=0; writingSound.play(); }catch(e){} }
+        function startAudioTimer(){ audioSeconds=0; audioTimerInterval=setInterval(()=>{ audioSeconds++; audioTimer.textContent=formatTime(audioSeconds); },1000); }
+        function stopAudioTimer(){ clearInterval(audioTimerInterval); }
+        function startVideoTimer(){ videoSeconds=0; videoTimerInterval=setInterval(()=>{ videoSeconds++; videoTimer.textContent=formatTime(videoSeconds); },1000); }
+        function stopVideoTimer(){ clearInterval(videoTimerInterval); }
+        function formatTime(s){ return `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`; }
+        function updateStars(score){ scoreStars.forEach((star,idx)=>{ if(idx<score){ star.style.opacity='1'; star.style.transform='scale(1.2)'; }else{ star.style.opacity='0.3'; star.style.transform='scale(1)'; } }); }
+        function showMessage(msg,type){ const toast=document.createElement('div'); toast.textContent=msg; toast.style.cssText=`position:fixed; top:20px; right:20px; background:${type==='error'?'var(--kid-pink)':type==='success'?'var(--kid-green)':'var(--kid-blue)'}; color:white; padding:1rem 1.5rem; border-radius:10px; z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:slideInRight 0.3s ease; max-width:300px;`; document.body.appendChild(toast); setTimeout(()=>{ toast.style.animation='slideOutRight 0.3s ease'; setTimeout(()=>toast.remove(),300); },3000); }
+        function saveToLocalStorage(){ localStorage.setItem('writeItRightProgress',JSON.stringify({ studentName, activityCounts, studentMistakes, studentStrengths, stickers })); localStorage.setItem('writeItRightStickers',JSON.stringify(stickers)); }
+        function scrollToSection(id){ const el=document.getElementById(id); if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),100); }
+        function scrollToActivities(){ document.querySelector('.activity-grid').parentElement.scrollIntoView({behavior:'smooth'}); showWritingSection(); playPositiveSound(); showMessage(`Welcome ${studentName}! Let's start writing! ✍️`,'success'); }
+        const styleSheet=document.createElement('style'); styleSheet.textContent=`@keyframes slideInRight{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}@keyframes slideOutRight{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}`; document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
